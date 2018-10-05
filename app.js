@@ -28,7 +28,11 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiply(a, b) { //eslint-disable-line
-
+    var product = a * b;
+    var summary = 'The product of ' + a + ' and ' + b + ' is ' + product + '.';
+    return [product, summary];
+  
+}
 
 // Here is the test for multiply(); uncomment it to run it
 testMultiply(5,9);
@@ -45,7 +49,14 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function sumAndMultiply(a, b, c) { //eslint-disable-line
+    var addNums            = sum(sum(a, b)[0], c)[0];
+    var addNumsString      = a + ' and ' + b + ' and ' + c + ' sum to ' + addNums + '.';
+    var multiplyNums       = multiply(multiply(a, b)[0], c)[0];
+    var multiplyNumsString = 'The product of ' + a + ' and ' + b + ' and ' + c + ' is ' + multiplyNums + '.'
 
+    return [addNums, multiplyNums, addNumsString, multiplyNumsString];
+
+}
 
 // Here is the test for sumAndMultiply(); uncomment it to run it
 testSumAndMultiply(4,7,5);
@@ -63,7 +74,15 @@ Test this function by hand in the console to get it working, and when you think 
 var testArray = [2, 3, 4]; //eslint-disable-line
 
 function sumArray(sumArr) { //eslint-disable-line
-
+    var addNums       = sum(sum(sumArr[0], sumArr[1])[0], sumArr[2])[0];
+    var addNumsString = sumArr[0] + ',' + 
+                        sumArr[1] + ',' + 
+                        sumArr[2] + ' was passed in as an array of numbers, and ' + 
+                        addNums + ' is their sum.';
+    
+    return [addNums, addNumsString];
+  
+}
 
 // Here is the test for sumArray(); uncomment it to run it
 
@@ -80,6 +99,11 @@ Test this function by hand in the console to get it working, and when you think 
 
 // Write your code here
 function multiplyArray(multArr) { //eslint-disable-line
+    var product = multiply(multiply(multArr[0], multArr[1])[0], multArr[2])[0];
+    var summary = 'The numbers ' + multArr[0] + ',' + multArr[1] + ',' + multArr[2] + ' have a product of ' + product + '.';
+    var myArray = [product, summary];
+    return myArray;
+  }
 
 // Here is the test for multiplyArray(); uncomment it to run it
 testMultiplyArray(testArray);
@@ -102,6 +126,15 @@ Test this function by hand in the console to get it working, and when you think 
 var testDynamicArray = [1,2,3,4,5]; //eslint-disable-line
 
 function multiplyAnyArray(dynamicArray) { //eslint-disable-line
+    var product         = dynamicArray[0];
+    var productString;
+
+    for (var i = 0; i < dynamicArray.length; i++){
+        product = multiply(product, dynamicArray[i])[0];
+    }
+    productString = 'The numbers '+ dynamicArray + ' have a product of ' + product + '.'
+    return [product, productString];
+}
 
 
 // Here is the test for multiplyArray(); uncomment it to run it
